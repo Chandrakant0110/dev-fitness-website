@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
     import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
     import { Dumbbell, HeartPulse, MapPin, Phone, Star, CheckCircle, ArrowRight, Users, UserCheck, Check, Clock, Heart, Menu } from "lucide-react";
     import { cn } from "@/lib/utils";
+    import logo from "@/assets/logo.jpg";
 
     const navLinks = ["HOME", "ABOUT", "FEATURES", "PRICING", "CONTACT"];
 
@@ -147,7 +148,7 @@ import { Button } from "@/components/ui/button";
       <header className="fixed top-4 inset-x-0 z-50 max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-20 px-6 bg-background/80 backdrop-blur-lg rounded-full border border-white/10 shadow-lg">
           <a href="#home" className="flex items-center gap-2 transition-transform hover:scale-105">
-            <img src="/src/assets/logo.jpg" alt="Dev Fitness Logo" className="h-12 w-12 rounded-full" />
+            <img src={logo} alt="Dev Fitness Logo" className="h-12 w-12 rounded-full" />
             <span className="text-xl font-bold text-white">DEV FITNESS & GYM</span>
           </a>
           
@@ -443,7 +444,7 @@ import { Button } from "@/components/ui/button";
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                  <img src="/src/assets/logo.jpg" alt="Dev Fitness Logo" className="h-10 w-10 rounded-full" />
+                  <img src={logo} alt="Dev Fitness Logo" className="h-10 w-10 rounded-full" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-white">DEV FITNESS</h3>
