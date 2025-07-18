@@ -4,23 +4,44 @@ import { Button } from "@/components/ui/button";
     import { Dumbbell, HeartPulse, BrainCircuit, MapPin, Phone, Star, CheckCircle, ArrowRight, Users, UserCheck, Check, Clock, Heart, Menu } from "lucide-react";
     import { cn } from "@/lib/utils";
 
-    const navLinks = ["HOME", "ABOUT", "CLASSES", "PRICING", "CONTACT"];
+    const navLinks = ["HOME", "ABOUT", "FEATURES", "PRICING", "CONTACT"];
 
-    const features = [
+    const featureDetails = [
       {
-        icon: <Dumbbell className="w-10 h-10 text-primary" />,
-        title: "State-of-the-Art Equipment",
-        description: "Latest cardio and strength training equipment to help you achieve your goals.",
+        title: "Professional Personal Training",
+        highlight: "Personal Training",
+        description: "Take your fitness to the next level with our certified personal trainers. Get personalized workout plans, proper form guidance, and motivation to achieve your goals faster and safer.",
+        list: [
+          "Customized workout programs",
+          "Nutrition and diet planning",
+          "Progress tracking and adjustments",
+          "Motivation and accountability",
+        ],
+        image: "https://images.pexels.com/photos/317155/pexels-photo-317155.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       },
       {
-        icon: <HeartPulse className="w-10 h-10 text-primary" />,
-        title: "Expert Personal Trainers",
-        description: "Our certified trainers are here to guide you and create personalized workout plans.",
+        title: "Premium Cardio Equipment",
+        highlight: "Cardio Equipment",
+        description: "Boost your cardiovascular health with our extensive range of cardio equipment. From treadmills to ellipticals, we have everything you need for an effective cardio workout.",
+        list: [
+          "Latest treadmills with touch screens",
+          "Elliptical machines for low-impact cardio",
+          "Stationary bikes and cycling equipment",
+          "Heart rate monitoring systems",
+        ],
+        image: "https://images.pexels.com/photos/2294361/pexels-photo-2294361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       },
       {
-        icon: <BrainCircuit className="w-10 h-10 text-primary" />,
-        title: "Holistic Approach",
-        description: "We focus on both physical and mental well-being with dedicated programs.",
+        title: "Extensive Strength Zone",
+        highlight: "Strength Zone",
+        description: "Build strength and muscle with our wide selection of free weights, resistance machines, and specialized bodybuilding equipment.",
+        list: [
+          "Full range of dumbbells and barbells",
+          "Squat racks and bench presses",
+          "Cable machines and functional trainers",
+          "Dedicated deadlift platforms",
+        ],
+        image: "https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       },
     ];
 
@@ -130,17 +151,19 @@ import { Button } from "@/components/ui/button";
             <span className="text-xl font-bold text-white">DEV FITNESS & GYM</span>
           </a>
           
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-6">
-            {navLinks.map(link => (
-              <a key={link} href={`#${link.toLowerCase()}`} className="text-muted-foreground hover:text-primary transition-colors font-medium">
-                {link}
-              </a>
-            ))}
-          </nav>
-          <a href="#pricing" className="hidden md:inline-flex">
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full">Join Now</Button>
-          </a>
+          {/* Desktop Nav & Button */}
+          <div className="hidden md:flex items-center gap-8">
+            <nav className="flex items-center gap-6">
+              {navLinks.map(link => (
+                <a key={link} href={`#${link.toLowerCase()}`} className="text-muted-foreground hover:text-primary transition-colors font-medium">
+                  {link}
+                </a>
+              ))}
+            </nav>
+            <a href="#pricing">
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full">Join Now</Button>
+            </a>
+          </div>
 
           {/* Mobile Nav */}
           <div className="md:hidden">
@@ -236,23 +259,41 @@ import { Button } from "@/components/ui/button";
     );
 
     const FeaturesSection = () => (
-      <section id="classes" className="py-20 bg-secondary">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-white">World-Class Facilities & Expert Guidance</h2>
-          <p className="mt-2 text-muted-foreground max-w-3xl mx-auto">
-            At Dev Fitness, we're equipped with the best to help you be your best. From top-tier equipment to certified trainers, your fitness goals are within reach.
-          </p>
-          <div className="mt-12 grid md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <Card key={index} className="bg-background text-left transition-transform duration-300 hover:-translate-y-2">
-                <CardHeader>
-                  {feature.icon}
-                  <CardTitle className="mt-4 text-2xl text-white">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{feature.description}</p>
-                </CardContent>
-              </Card>
+      <section id="features" className="py-20 bg-secondary">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-white">Why Choose Dev Fitness & Gym?</h2>
+            <p className="mt-2 text-muted-foreground max-w-3xl mx-auto">
+              Experience the difference with our world-class facilities, expert guidance, and commitment to your fitness success.
+            </p>
+          </div>
+          <div className="space-y-24">
+            {featureDetails.map((feature, index) => (
+              <div key={feature.title} className="grid md:grid-cols-2 gap-16 items-center">
+                <div className={cn("text-left", index % 2 !== 0 && "md:order-last")}>
+                  <h3 className="text-3xl font-bold text-white">
+                    {feature.title.split(feature.highlight)[0]}
+                    <span className="text-primary">{feature.highlight}</span>
+                    {feature.title.split(feature.highlight)[1]}
+                  </h3>
+                  <p className="mt-4 text-lg text-muted-foreground">{feature.description}</p>
+                  <ul className="mt-6 space-y-3">
+                    {feature.list.map((item) => (
+                      <li key={item} className="flex items-center gap-4">
+                        <div className="w-2.5 h-2.5 bg-primary rounded-full flex-shrink-0"></div>
+                        <span className="text-muted-foreground">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <img 
+                    src={feature.image} 
+                    alt={feature.title} 
+                    className="rounded-xl shadow-2xl aspect-video object-cover w-full h-auto transition-transform duration-300 hover:scale-105"
+                  />
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -264,11 +305,15 @@ import { Button } from "@/components/ui/button";
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold text-white">Flexible Plans for Every Goal</h2>
           <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">
-            Find the perfect membership to match your ambition and budget. A one-time admission fee of ₹300 applies to all new members.
+            Choose the perfect plan that fits your fitness goals and budget.
           </p>
-          <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="my-8 max-w-sm mx-auto bg-primary/10 p-4 rounded-lg border border-primary/20">
+            <p className="font-semibold text-primary">Entry Fee (One Time): ₹300/-</p>
+            <p className="text-xs text-muted-foreground mt-1">*Paid fee not refundable</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {pricingPlans.map((plan) => (
-              <Card key={plan.title} className={cn("flex flex-col text-left relative transition-transform duration-300 hover:-translate-y-2", plan.popular && "border-2 border-primary shadow-lg shadow-primary/20")}>
+              <Card key={plan.title} className={cn("bg-secondary flex flex-col text-left relative transition-transform duration-300 hover:-translate-y-2", plan.popular && "border-2 border-primary shadow-lg shadow-primary/20")}>
                 {plan.popular && (
                   <div className="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
                     Most Popular
