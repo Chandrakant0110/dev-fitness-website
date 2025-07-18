@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
     import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
     import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
-    import { Dumbbell, HeartPulse, BrainCircuit, MapPin, Phone, Star, CheckCircle, ArrowRight, Users, UserCheck, Check, Clock, Heart, Menu } from "lucide-react";
+    import { Dumbbell, HeartPulse, MapPin, Phone, Star, CheckCircle, ArrowRight, Users, UserCheck, Check, Clock, Heart, Menu } from "lucide-react";
     import { cn } from "@/lib/utils";
 
     const navLinks = ["HOME", "ABOUT", "FEATURES", "PRICING", "CONTACT"];
